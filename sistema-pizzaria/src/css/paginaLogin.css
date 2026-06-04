@@ -1,0 +1,72 @@
+/* RESET */
+.login-page {
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/img-fundo02.png");
+  background-position: center;
+  background-size: cover;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  min-height: 100vh;
+}
+
+/* CARD LOGIN */
+.login-container {
+  width: 380px;
+    background: rgba(43, 27, 20, 0.85); 
+    backdrop-filter: blur(10px);  
+    -webkit-backdrop-filter: blur(10px); 
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.label-campo {
+    color: white;
+}
+ 
+
+/* LOGO */
+.logotipo {
+  width: 120px;
+}
+
+/* CAMPOS */
+.form-control {
+  border-radius: 8px;
+}
+
+/* BOTÃO */
+.btn-entrar {
+  background-color: #ff4d4d;
+  border: none;
+}
+
+.btn-entrar:hover {
+  background-color: #e63939;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 480px) {
+
+  .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .logotipo {
+    width: 100px;
+  }
+
+  .form-control {
+    font-size: 14px;
+  }
+}
