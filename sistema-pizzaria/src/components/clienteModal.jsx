@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 
-function ClienteModal({
-  aberto,
-  fechar,
-  cliente,
-  salvar,
-}) {
+function ClienteModal({aberto, fechar, cliente, salvar}) {
   const [dados, setDados] = useState({
     nome: "",
     telefone: "",
@@ -37,14 +32,14 @@ function ClienteModal({
       !dados.numero.trim() ||
       !dados.bairro.trim()
     ) {
-      alert(
-        "Nome, telefone, número e bairro são obrigatórios."
-      );
+      alert("Nome, telefone, número e bairro são obrigatórios.");
       return;
     }
-
+    
     salvar(dados);
+    alert("Registro salvo com sucesso!");
     fechar();
+   
   };
 
   if (!aberto) return null;
@@ -57,16 +52,10 @@ function ClienteModal({
 
             <div className="modal-header">
               <h5 className="modal-title">
-                {cliente
-                  ? "Editar Cliente"
-                  : "Cadastrar Cliente"}
+                {cliente ? "Editar Cliente" : "Cadastrar Cliente"}
               </h5>
 
-              <button
-                type="button"
-                className="btn-close"
-                onClick={fechar}
-              />
+              <button type="button" className="btn-close" onClick={fechar}/>
             </div>
 
             <div className="modal-body">

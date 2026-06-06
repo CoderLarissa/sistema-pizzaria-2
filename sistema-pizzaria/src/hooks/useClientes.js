@@ -3,18 +3,13 @@ import { useEffect, useState } from "react";
 export default function useClientes() {
   const [clientes, setClientes] = useState([]);
 
-  useEffect(() => {
-    const clientesSalvos =
-      JSON.parse(sessionStorage.getItem("Clientes")) || [];
-
+  useEffect(() => { 
+    const clientesSalvos = JSON.parse(sessionStorage.getItem("Clientes")) || [];
     setClientes(clientesSalvos);
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem(
-      "Clientes",
-      JSON.stringify(clientes)
-    );
+    sessionStorage.setItem("Clientes", JSON.stringify(clientes));
   }, [clientes]);
 
   const adicionarCliente = (cliente) => {
@@ -24,16 +19,11 @@ export default function useClientes() {
     };
 
     setClientes((prev) => [...prev, novoCliente]);
+    
   };
 
   const editarCliente = (clienteAtualizado) => {
-    setClientes((prev) =>
-      prev.map((cliente) =>
-        cliente.id === clienteAtualizado.id
-          ? clienteAtualizado
-          : cliente
-      )
-    );
+    setClientes((prev) => prev.map((cliente) => cliente.id === clienteAtualizado.id? clienteAtualizado : cliente));
   };
 
   const excluirCliente = (id) => {
@@ -43,15 +33,8 @@ export default function useClientes() {
 
     if (!confirmou) return;
 
-    setClientes((prev) =>
-      prev.filter((cliente) => cliente.id !== id)
-    );
+    setClientes((prev) => prev.filter((cliente) => cliente.id !== id));
   };
 
-  return {
-    clientes,
-    adicionarCliente,
-    editarCliente,
-    excluirCliente,
-  };
+  return {clientes, adicionarCliente, editarCliente, excluirCliente};
 }

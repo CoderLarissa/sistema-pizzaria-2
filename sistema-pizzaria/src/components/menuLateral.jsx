@@ -1,7 +1,16 @@
 import { useState } from "react";
 import "../css/menu.css"
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function MenuLateral() {
+  const navigateLogin = useNavigate()
+
+  function sairAplicacao() {
+    const sair = confirm("Deseja realmente sair da aplicação?")
+    const telaLogin = (sair && navigateLogin("/"));
+    
+  }
 
   return (
     <aside
@@ -13,27 +22,27 @@ function MenuLateral() {
       <nav className="flex-grow-1 menu-body">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <Link to="/clientesPage" className="nav-link text-white">
               Clientes
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <Link to="/pizzasPage" className="nav-link text-white">
               Pizzas
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <Link to="/pedidosPage" className="nav-link text-white">
               Pedidos
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
 
       <div className="p-3 secao-sair">
-        <button className="btn btn-outline-light w-100">
+        <button className="btn btn-outline-light w-100" onClick={sairAplicacao}>
           Sair
         </button>
       </div>

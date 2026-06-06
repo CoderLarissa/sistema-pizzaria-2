@@ -1,18 +1,11 @@
 import { useState } from "react";
-
 import MenuLateral from "../components/MenuLateral";
-import Footer from "../components/Footer";
 import ClienteModal from "../components/ClienteModal";
-
+import "../css/global.css"
 import useClientes from "../hooks/useClientes";
 
 function ClientesPage() {
-  const {
-    clientes,
-    adicionarCliente,
-    editarCliente,
-    excluirCliente,
-  } = useClientes();
+  const { clientes, adicionarCliente, editarCliente, excluirCliente } = useClientes();
 
   const [mostrarModal, setMostrarModal] =
     useState(false);
@@ -24,12 +17,7 @@ function ClientesPage() {
     useState("");
 
   const clientesFiltrados = clientes.filter(
-    (cliente) =>
-      cliente.nome
-        .toLowerCase()
-        .includes(
-          pesquisa.toLowerCase()
-        )
+    (cliente) => cliente.nome.toLowerCase().includes(pesquisa.toLowerCase())
   );
 
   const clientesExibidos =
@@ -56,17 +44,18 @@ function ClientesPage() {
     } else {
       adicionarCliente(dados);
     }
+
   };
 
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="app-layout">
 
         <div className="col-auto p-0">
           <MenuLateral />
         </div>
 
-        <main className="col p-4">
+        <main className="main-content p-4">
 
           <h1 className="mb-4 text-danger">
             Clientes
@@ -75,21 +64,12 @@ function ClientesPage() {
           <div className="d-flex flex-column flex-md-row gap-3 justify-content-between mb-4">
 
             <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Buscar cliente"
-                value={pesquisa}
-                onChange={(e) =>
-                  setPesquisa(e.target.value)
-                }
-              />
+              <input type="text" className="form-control" placeholder="Buscar cliente" value={pesquisa} onChange={(e) => 
+                setPesquisa(e.target.value)
+              }/>
             </div>
 
-            <button
-              className="btn btn-primary"
-              onClick={abrirCadastro}
-            >
+            <button className="btn btn-primary" onClick={abrirCadastro}>
               + Adicionar Cliente
             </button>
 
@@ -104,15 +84,12 @@ function ClientesPage() {
                     Nenhum cliente cadastrado
                   </h5>
 
-                  <button
-                    className="btn btn-primary mt-3"
-                    onClick={abrirCadastro}
-                  >
+                  <button className="btn btn-primary mt-3" onClick={abrirCadastro}>
                     Cadastrar Cliente
                   </button>
                 </div>
               ) : (
-                <>
+                <div className="table-container">
                   <table className="table table-striped align-middle">
 
                     <thead>
@@ -131,19 +108,14 @@ function ClientesPage() {
 
                       {clientesExibidos.length === 0 ? (
                         <tr>
-                          <td
-                            colSpan="7"
-                            className="text-center text-muted"
-                          >
+                          <td colSpan="7" className="text-center text-muted">
                             Nenhum cliente encontrado
                           </td>
                         </tr>
                       ) : (
                         clientesExibidos.map(
                           (cliente) => (
-                            <tr
-                              key={cliente.id}
-                            >
+                            <tr key={cliente.id}>
                               <td>
                                 {cliente.nome}
                               </td>
@@ -173,25 +145,11 @@ function ClientesPage() {
                               </td>
 
                               <td>
-                                <button
-                                  className="btn btn-warning btn-sm me-2"
-                                  onClick={() =>
-                                    abrirEdicao(
-                                      cliente
-                                    )
-                                  }
-                                >
+                                <button className="btn btn-warning btn-sm me-2" onClick={() => abrirEdicao(cliente)}>
                                   Editar
                                 </button>
 
-                                <button
-                                  className="btn btn-danger btn-sm"
-                                  onClick={() =>
-                                    excluirCliente(
-                                      cliente.id
-                                    )
-                                  }
-                                >
+                                <button className="btn btn-danger btn-sm" onClick={() => excluirCliente(cliente.id)}>
                                   Excluir
                                 </button>
                               </td>
@@ -204,34 +162,21 @@ function ClientesPage() {
 
                   </table>
 
-                  {clientesFiltrados.length >
-                    7 && (
+                  {clientesFiltrados.length > 7 && (
                     <p className="text-muted small">
-                      Exibindo apenas os
-                      7 primeiros registros.
+                      Exibindo apenas os 7 primeiros registros.
                     </p>
                   )}
-                </>
+                </div>
               )}
 
             </div>
           </div>
 
         </main>
-
-        <Footer
-          textColor="black"
-          bgColor="warning"
-        />
-
       </div>
 
-      <ClienteModal
-        aberto={mostrarModal}
-        fechar={fecharModal}
-        cliente={clienteSelecionado}
-        salvar={salvarCliente}
-      />
+      <ClienteModal aberto={mostrarModal} fechar={fecharModal} cliente={clienteSelecionado} salvar={salvarCliente}/>
 
     </div>
   );

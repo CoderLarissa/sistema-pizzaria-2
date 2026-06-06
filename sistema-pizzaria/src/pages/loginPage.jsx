@@ -2,15 +2,18 @@ import { useState } from "react";
 import logotipoPizzaria from "../assets/logotipoPizzaria.png"
 import "../css/paginaLogin.css";
 import Footer from "../components/footer"
+import { useNavigate } from "react-router-dom";
 function LoginPage() {
 
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
 
+  const navigate = useNavigate();
+
   function validarLogin(e) {
     e.preventDefault();
     if (usuario === "admin" && senha === "admin") {
-      alert("Seja bem vindo!")
+      navigate("/clientesPage")
     } else {
       alert("Usuário ou senha incorretos!")
     }
@@ -39,7 +42,7 @@ function LoginPage() {
             <input type="password" className="form-control" placeholder="Digite sua senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
           </div>
 
-          <button className="btn btn-primary w-100 btn-entrar mt-2" type="submit">
+          <button className="btn btn-warning w-100 btn-entrar mt-2" type="submit">
             Entrar
           </button>
 
