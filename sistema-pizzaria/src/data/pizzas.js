@@ -1,3 +1,4 @@
+//Lista de objetos para simular os registros de pizzas na tabela de pedidos
 export const listaPizzasTeste = [
   {
     id: 0,

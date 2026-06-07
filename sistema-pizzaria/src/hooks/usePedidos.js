@@ -17,33 +17,11 @@ export default function usePedidos() {
     ]);
   };
 
-  const atualizarItem = (
-    id,
-    campo,
-    valor
-  ) => {
-    setItensPedido((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              [campo]: valor,
-            }
-          : item
-      )
-    );
+  const atualizarItem = (id, campo, valor) => {
+    setItensPedido((prev) => prev.map((item) => item.id === id ? {...item, [campo]: valor } : item));
   };
 
-  const totalPedido = itensPedido.reduce(
-    (total, item) =>
-      total + Number(item.total),
-    0
-  );
+  const totalPedido = itensPedido.reduce((total, item) => total + Number(item.total), 0);
 
-  return {
-    itensPedido,
-    adicionarItem,
-    atualizarItem,
-    totalPedido,
-  };
+  return {itensPedido, adicionarItem, atualizarItem, totalPedido};
 }

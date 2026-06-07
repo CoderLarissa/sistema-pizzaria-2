@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 
 function ClienteModal({aberto, fechar, cliente, salvar}) {
-  const [dados, setDados] = useState({
-    nome: "",
-    telefone: "",
-    logradouro: "",
-    bairro: "",
-    numero: "",
-    complemento: "",
-  });
+  const [dados, setDados] = useState(
+    {
+      nome: "",
+      telefone: "",
+      logradouro: "",
+      bairro: "",
+      numero: "",
+      complemento: "",
+    }
+  );
 
   useEffect(() => {
     if (cliente) {
@@ -26,16 +28,10 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
   }, [cliente]);
 
   const handleSalvar = () => {
-    if (
-      !dados.nome.trim() ||
-      !dados.telefone.trim() ||
-      !dados.numero.trim() ||
-      !dados.bairro.trim()
-    ) {
+    if (!dados.nome.trim() || !dados.telefone.trim() || !dados.numero.trim() || !dados.bairro.trim()) {
       alert("Nome, telefone, número e bairro são obrigatórios.");
       return;
     }
-    
     salvar(dados);
     alert("Registro salvo com sucesso!");
     fechar();
@@ -60,11 +56,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
 
             <div className="modal-body">
 
-              <input
-                className="form-control mb-2"
-                placeholder="Nome"
-                value={dados.nome}
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Nome" value={dados.nome} onChange={(e) =>
                   setDados({
                     ...dados,
                     nome: e.target.value,
@@ -72,11 +64,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Telefone"
-                value={dados.telefone}
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Telefone" value={dados.telefone} onChange={(e) =>
                   setDados({
                     ...dados,
                     telefone: e.target.value,
@@ -84,11 +72,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Logradouro"
-                value={dados.logradouro}
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Logradouro" value={dados.logradouro} onChange={(e) =>
                   setDados({
                     ...dados,
                     logradouro: e.target.value,
@@ -96,11 +80,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Número"
-                value={dados.numero}
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Número" value={dados.numero} onChange={(e) =>
                   setDados({
                     ...dados,
                     numero: e.target.value,
@@ -108,11 +88,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Bairro"
-                value={dados.bairro}
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Bairro" value={dados.bairro} onChange={(e) =>
                   setDados({
                     ...dados,
                     bairro: e.target.value,
@@ -120,11 +96,7 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
                 }
               />
 
-              <input
-                className="form-control"
-                placeholder="Complemento"
-                value={dados.complemento}
-                onChange={(e) =>
+              <input className="form-control" placeholder="Complemento" value={dados.complemento} onChange={(e) =>
                   setDados({
                     ...dados,
                     complemento: e.target.value,
@@ -136,24 +108,13 @@ function ClienteModal({aberto, fechar, cliente, salvar}) {
 
             <div className="modal-footer">
 
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={fechar}
-              >
+              <button type="button" className="btn btn-secondary" onClick={fechar}>
                 Fechar
               </button>
 
-              <button
-                type="button"
-                className="btn btn-success"
-                onClick={handleSalvar}
-              >
-                {cliente
-                  ? "Salvar Alterações"
-                  : "Cadastrar"}
+              <button type="button" className="btn btn-success" onClick={handleSalvar}>
+                {cliente ? "Salvar Alterações" : "Cadastrar"}
               </button>
-
             </div>
 
           </div>

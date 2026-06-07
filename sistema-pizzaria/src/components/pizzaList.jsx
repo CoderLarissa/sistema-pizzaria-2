@@ -1,20 +1,12 @@
 import PizzaCard from "./PizzaCard";
 
-function PizzaList({
-  pizzas,
-  onEdit,
-  onDelete,
-}) {
+function PizzaList({pizzas, onEdit, onDelete}) {
   return (
     <div className="row">
       {pizzas.map((pizza) => (
-        <PizzaCard
-          key={pizza.id}
-          pizza={pizza}
-          onEdit={onEdit}
-          onDelete={onDelete}
-        />
-      ))}
+        <PizzaCard key={pizza.id} pizza={pizza} onEdit={onEdit} onDelete={onDelete} />
+        ))
+      }
     </div>
   );
 }

@@ -1,8 +1,4 @@
-function PizzaCard({
-  pizza,
-  onEdit,
-  onDelete,
-}) {
+function PizzaCard({pizza, onEdit, onDelete}) {
   return (
     <div className="col-md-4 mb-4">
       <div className="card shadow h-100">
@@ -25,21 +21,11 @@ function PizzaCard({
 
         <div className="card-footer bg-white border-0 d-flex justify-content-between">
 
-          <button
-            className="btn btn-warning btn-sm"
-            onClick={() =>
-              onEdit(pizza)
-            }
-          >
+          <button className="btn btn-warning btn-sm" onClick={() => onEdit(pizza)}>
             Editar
           </button>
 
-          <button
-            className="btn btn-danger btn-sm"
-            onClick={() =>
-              onDelete(pizza.id)
-            }
-          >
+          <button className="btn btn-danger btn-sm" onClick={() => onDelete(pizza.id)}>
             Excluir
           </button>
 

@@ -2,18 +2,11 @@ import { useEffect, useState } from "react";
 
 export default function usePizzas() {
   const [pizzas, setPizzas] = useState(() => {
-    return (
-      JSON.parse(
-        sessionStorage.getItem("Pizzas")
-      ) || []
-    );
+    return (JSON.parse(sessionStorage.getItem("Pizzas")) || []);
   });
 
   useEffect(() => {
-    sessionStorage.setItem(
-      "Pizzas",
-      JSON.stringify(pizzas)
-    );
+    sessionStorage.setItem("Pizzas", JSON.stringify(pizzas));
   }, [pizzas]);
 
   const adicionarPizza = (pizza) => {
@@ -30,34 +23,18 @@ export default function usePizzas() {
 
   const editarPizza = (pizzaAtualizada) => {
     setPizzas((prev) =>
-      prev.map((pizza) =>
-        pizza.id === pizzaAtualizada.id
-          ? pizzaAtualizada
-          : pizza
-      )
+      prev.map((pizza) => pizza.id === pizzaAtualizada.id ? pizzaAtualizada : pizza)
     );
   };
 
   const excluirPizza = (id) => {
     if (
-      !window.confirm(
-        "Deseja excluir esta pizza?"
-      )
+      !window.confirm("Deseja excluir esta pizza?")
     ) {
       return;
     }
-
-    setPizzas((prev) =>
-      prev.filter(
-        (pizza) => pizza.id !== id
-      )
-    );
+    setPizzas((prev) => prev.filter((pizza) => pizza.id !== id));
   };
 
-  return {
-    pizzas,
-    adicionarPizza,
-    editarPizza,
-    excluirPizza,
-  };
+  return {pizzas, adicionarPizza, editarPizza, excluirPizza};
 }

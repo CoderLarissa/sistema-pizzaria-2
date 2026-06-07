@@ -17,7 +17,6 @@ export default function useClientes() {
       ...cliente,
       id: Date.now(),
     };
-
     setClientes((prev) => [...prev, novoCliente]);
     
   };
@@ -27,12 +26,8 @@ export default function useClientes() {
   };
 
   const excluirCliente = (id) => {
-    const confirmou = window.confirm(
-      "Deseja excluir este cliente?"
-    );
-
+    const confirmou = window.confirm("Deseja excluir este cliente?");
     if (!confirmou) return;
-
     setClientes((prev) => prev.filter((cliente) => cliente.id !== id));
   };
 

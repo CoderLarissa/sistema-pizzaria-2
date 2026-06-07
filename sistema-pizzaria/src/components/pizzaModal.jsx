@@ -1,17 +1,14 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-function PizzaModal({
-  show,
-  handleClose,
-  handleSave,
-  pizzaSelecionada,
-}) {
-  const [pizza, setPizza] = useState({
-    nome: "",
-    descricao: "",
-    preco: "",
-  });
+function PizzaModal({show, handleClose, handleSave, pizzaSelecionada}) {
+  const [pizza, setPizza] = useState(
+    {
+      nome: "",
+      descricao: "",
+      preco: "",
+    }
+  );
 
   useEffect(() => {
     if (pizzaSelecionada) {
@@ -28,14 +25,8 @@ function PizzaModal({
   const enviar = (e) => {
     e.preventDefault();
 
-    if (
-      !pizza.nome.trim() ||
-      !pizza.descricao.trim() ||
-      !pizza.preco
-    ) {
-      alert(
-        "Todos os campos são obrigatórios."
-      );
+    if (!pizza.nome.trim() || !pizza.descricao.trim() || !pizza.preco) {
+      alert("Todos os campos são obrigatórios.");
       return;
     }
 
@@ -48,16 +39,10 @@ function PizzaModal({
   };
 
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}
-      centered
-    >
+    <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>
-          {pizzaSelecionada
-            ? "Editar Pizza"
-            : "Cadastrar Pizza"}
+          {pizzaSelecionada ? "Editar Pizza" : "Cadastrar Pizza"}
         </Modal.Title>
       </Modal.Header>
 
@@ -69,11 +54,7 @@ function PizzaModal({
               Nome
             </Form.Label>
 
-            <Form.Control
-              type="text"
-              placeholder="Nome da pizza"
-              value={pizza.nome}
-              onChange={(e) =>
+            <Form.Control type="text" placeholder="Nome da pizza" value={pizza.nome} onChange={(e) =>
                 setPizza({
                   ...pizza,
                   nome: e.target.value,
@@ -87,16 +68,10 @@ function PizzaModal({
               Descrição
             </Form.Label>
 
-            <Form.Control
-              as="textarea"
-              rows={3}
-              placeholder="Descrição da pizza"
-              value={pizza.descricao}
-              onChange={(e) =>
+            <Form.Control as="textarea" rows={3} placeholder="Descrição da pizza" value={pizza.descricao} onChange={(e) =>
                 setPizza({
                   ...pizza,
-                  descricao:
-                    e.target.value,
+                  descricao:e.target.value,
                 })
               }
             />
@@ -107,17 +82,10 @@ function PizzaModal({
               Preço
             </Form.Label>
 
-            <Form.Control
-              type="number"
-              step="0.01"
-              min="0"
-              placeholder="0.00"
-              value={pizza.preco}
-              onChange={(e) =>
+            <Form.Control type="number" step="0.01" min="0" placeholder="0.00" value={pizza.preco} onChange={(e) =>
                 setPizza({
                   ...pizza,
-                  preco:
-                    e.target.value,
+                  preco:e.target.value,
                 })
               }
             />
@@ -127,20 +95,12 @@ function PizzaModal({
 
         <Modal.Footer>
 
-          <Button
-            variant="secondary"
-            onClick={handleClose}
-          >
+          <Button className="btn btn-secondary" onClick={handleClose}>
             Cancelar
           </Button>
 
-          <Button
-            variant="success"
-            type="submit"
-          >
-            {pizzaSelecionada
-              ? "Salvar Alterações"
-              : "Cadastrar"}
+          <Button className="btn btn-success" type="submit">
+            {pizzaSelecionada ? "Salvar Alterações" : "Cadastrar"}
           </Button>
 
         </Modal.Footer>

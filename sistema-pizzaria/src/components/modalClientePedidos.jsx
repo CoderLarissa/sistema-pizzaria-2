@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-function ModalClientePedidos({
-  aberto,
-  fechar,
-  setCliente,
-}) {
+function ModalClientePedidos({aberto, fechar, setCliente}) {
   const [dados, setDados] = useState({
     nome: "",
     telefone: "",
@@ -31,17 +27,11 @@ function ModalClientePedidos({
                 Cadastro de Cliente
               </h5>
 
-              <button
-                className="btn-close"
-                onClick={fechar}
-              ></button>
+              <button className="btn-close" onClick={fechar}></button>
             </div>
 
             <div className="modal-body">
-              <input
-                className="form-control mb-2"
-                placeholder="Nome"
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Nome" onChange={(e) =>
                   setDados({
                     ...dados,
                     nome: e.target.value,
@@ -49,10 +39,7 @@ function ModalClientePedidos({
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Telefone"
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Telefone" onChange={(e) =>
                   setDados({
                     ...dados,
                     telefone: e.target.value,
@@ -60,10 +47,7 @@ function ModalClientePedidos({
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Logradouro"
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Logradouro" onChange={(e) =>
                   setDados({
                     ...dados,
                     logradouro: e.target.value,
@@ -71,10 +55,7 @@ function ModalClientePedidos({
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Número"
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Número" onChange={(e) =>
                   setDados({
                     ...dados,
                     numero: e.target.value,
@@ -82,10 +63,7 @@ function ModalClientePedidos({
                 }
               />
 
-              <input
-                className="form-control mb-2"
-                placeholder="Bairro"
-                onChange={(e) =>
+              <input className="form-control mb-2" placeholder="Bairro" onChange={(e) =>
                   setDados({
                     ...dados,
                     bairro: e.target.value,
@@ -93,10 +71,7 @@ function ModalClientePedidos({
                 }
               />
 
-              <input
-                className="form-control"
-                placeholder="Complemento"
-                onChange={(e) =>
+              <input className="form-control" placeholder="Complemento" onChange={(e) =>
                   setDados({
                     ...dados,
                     complemento: e.target.value,
@@ -106,17 +81,11 @@ function ModalClientePedidos({
             </div>
 
             <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={fechar}
-              >
+              <button className="btn btn-secondary" onClick={fechar}>
                 Fechar
               </button>
 
-              <button
-                className="btn btn-success"
-                onClick={cadastrar}
-              >
+              <button className="btn btn-success" onClick={cadastrar}>
                 Cadastrar
               </button>
             </div>
