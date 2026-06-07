@@ -1,8 +1,6 @@
 <h1 align="center">🍕 Fictional Pizza shop management system </h1>
 <p align="center"> Web Systems Course Project </p>
-<div align="center">
-    <img src="../sistema-pizzaria/src/assets/logotipoPizzaria.png" width="200">
-</div>
+
 <h1>Description</h1>
 <p>This project was developed for the Web Systems course and simulates the management of a pizza shop. The platform allows administrators to log in and perform CRUD operations on customers and pizza flavors, as well as simulate pizza orders.
 
