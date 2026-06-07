@@ -57,7 +57,7 @@ export default function PedidosPage() {
   };
 
   function salvarPedido() {
-    const mensagemAlert = (confirm("Deseja salvar esse pedido"));
+    const mensagemAlert = (confirm("Deseja salvar esse pedido?"));
     if (mensagemAlert) {
       alert("Pedido salvo com sucesso!");
     }

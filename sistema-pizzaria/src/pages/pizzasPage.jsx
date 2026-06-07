@@ -59,11 +59,7 @@ function PizzasPage() {
           <div className="d-flex flex-column flex-md-row gap-3 justify-content-between mb-4">
 
             <input type="text" className="form-control" placeholder="Buscar sabor" value={busca}
-              onChange={(e) =>
-                setBusca(
-                  e.target.value
-                )
-              }/>
+              onChange={(e) => setBusca(e.target.value)} />
 
             <button className="btn btn-primary" onClick={abrirCadastro}>
               + Adicionar Pizza
@@ -87,11 +83,7 @@ function PizzasPage() {
             </div>
           ) : (
             <div>
-              <PizzaList
-                pizzas={pizzasExibidas}
-                onEdit={abrirEdicao}
-                onDelete={excluirPizza}
-              />
+              <PizzaList pizzas={pizzasExibidas} onEdit={abrirEdicao} onDelete={excluirPizza} />
 
               {pizzasFiltradas.length > 7 && (
                 <p className="text-muted mt-3">
