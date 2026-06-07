@@ -87,7 +87,7 @@ export default function PedidosPage() {
             Pedidos
           </h1>
 
-          <div className="d-flex gap-3 mb-4">
+          <div className="d-flex flex-column flex-md-row gap-3 justify-content-between mb-4">
 
             <input className="form-control" placeholder="Buscar cliente" value={pesquisa} onChange={(e) =>
                 setPesquisa(e.target.value)} />

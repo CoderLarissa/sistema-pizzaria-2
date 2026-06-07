@@ -56,7 +56,7 @@ function PizzasPage() {
             Pizzas
           </h1>
 
-          <div className="d-flex gap-3 mb-4">
+          <div className="d-flex flex-column flex-md-row gap-3 justify-content-between mb-4">
 
             <input type="text" className="form-control" placeholder="Buscar sabor" value={busca}
               onChange={(e) =>
